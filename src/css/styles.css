@@ -8,6 +8,7 @@
   margin-left: auto;
   margin-right: auto;
   display: none;
+  margin-top: 32px;
 }
 .loader:before,
 .loader:after {
@@ -69,7 +70,7 @@
   display: none;
 }
 
-button {
+.searchBtn {
   background-color: #4e75ff;
   color: #fff;
   border-radius: 8px;
@@ -79,7 +80,7 @@ button {
   border-color: transparent;
 }
 
-button:hover {
+.searchBtn:hover {
   background-color: #6c8cff;
 }
 
@@ -152,4 +153,22 @@ input:focus {
 
 .loader.open {
   display: block;
+}
+
+.moreBtn {
+  display: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  width: 125px;
+  height: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #4e75ff;
+  color: #fff;
+  border-color: transparent;
+  margin-top: 32px;
+}
+
+.moreBtn:hover {
+  background-color: #6c8cff;
 }

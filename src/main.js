@@ -48,11 +48,11 @@ formEl.addEventListener('submit', async e => {
       showLoadMoreButton();
     }
   } catch (error) {
-    console.error('Fetch error:', error);
+    console.error('error:', error);
     iziToast.error({
-      title: 'Error',
-      message: 'Something went wrong. Please try again later.',
+      message: `We're sorry, but you've reached the end of search results.`,
       position: 'topRight',
+      color: 'red',
     });
   } finally {
     hideLoader();

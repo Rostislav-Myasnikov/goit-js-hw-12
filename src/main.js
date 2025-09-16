@@ -6,6 +6,7 @@ import {
   showLoadMoreButton,
   hideLoadMoreButton,
   scrollGallery,
+  clearGallery,
 } from './js/render-functions.js';
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
@@ -21,11 +22,17 @@ formEl.addEventListener('submit', async e => {
   e.preventDefault();
 
   const query = e.currentTarget.elements['search-text'].value.trim();
-  if (!query) return;
+  if (!query){ 
+      iziToast.error({
+    title: 'error',
+    message: 'Please enter a word to search for.',
+    position: 'topRight',
+  });
+    return;}
 
   currentQuery = query;
   page = 1;
-  document.querySelector('.gallery').innerHTML = '';
+  clearGallery();
   hideLoadMoreButton();
   showLoader();
 
@@ -46,7 +53,12 @@ formEl.addEventListener('submit', async e => {
 
     if (data.totalHits > PER_PAGE) {
       showLoadMoreButton();
-    }
+    } else {iziToast.info({
+  title: 'End of Results',
+  message: "We're sorry, but you've reached the end of search results.",
+  position: 'topRight',
+});
+}
   } catch (error) {
     console.error('error:', error);
     iziToast.error({
@@ -71,6 +83,12 @@ moreBtn.addEventListener('click', async () => {
 
     if (page * PER_PAGE >= data.totalHits) {
       hideLoadMoreButton();
+      iziToast.info({
+  title: 'End of Results',
+  message: "We're sorry, but you've reached the end of search results.",
+  position: 'topRight',
+});
+
     }
   } catch (error) {
     console.error('Load more error:', error);
